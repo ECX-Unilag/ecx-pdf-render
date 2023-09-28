@@ -1,0 +1,22 @@
+.pdfReader {
+  max-width: 700px;
+  width: 100%;
+  background: transparent;
+}
+.navbar {
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+button {
+  border-radius: 5px;
+  padding: 10px 15px;
+  background: #4284f7;
+  color: #fff;
+  opacity: 1;
+}
+buton:hover {
+  opacity: 0.7;
+}
