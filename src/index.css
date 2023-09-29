@@ -2,12 +2,13 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 body {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  padding: 40px 5%;
   background: #f3f8ff;
 }
 button {

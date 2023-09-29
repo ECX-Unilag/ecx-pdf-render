@@ -56,12 +56,11 @@ const App = () => {
         </button>
       </nav>
       <Document
-        width={windowSize.innerWidth < 780 ? windowSize.innerWidth - 80 : 700}
+        className="documentViewer"
         file="/ECX-4.0-Sponsorship-Packet.pdf"
         onLoadSuccess={onDocumentLoadSuccess}
       >
         <Page
-          width={windowSize.innerWidth < 780 ? windowSize.innerWidth - 80 : 700}
           pageNumber={pageNumber}
           renderAnnotationLayer={false}
           renderTextLayer={false}
