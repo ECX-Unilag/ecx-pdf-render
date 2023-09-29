@@ -1,30 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 import "./App.css";
 
-function getWindowSize() {
-  const { innerWidth, innerHeight } = window;
-  return { innerWidth, innerHeight };
-}
-
 const App = () => {
-  const [numPages, setNumPages] = useState();
+  const [numPages, setNumPages] = useState(1);
   const [pageNumber, setPageNumber] = useState(1);
-
-  const [windowSize, setWindowSize] = useState(getWindowSize());
-
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -55,17 +36,24 @@ const App = () => {
           Next
         </button>
       </nav>
-      <Document
-        className="documentViewer"
-        file="/ECX-4.0-Sponsorship-Packet.pdf"
-        onLoadSuccess={onDocumentLoadSuccess}
+      <div className="documentViewer">
+        <Document
+          file="/ECX-4.0-Sponsorship-Packet.pdf"
+          onLoadSuccess={onDocumentLoadSuccess}
+        >
+          <Page
+            pageNumber={pageNumber}
+            renderAnnotationLayer={false}
+            renderTextLayer={false}
+          />
+        </Document>
+      </div>
+      <a
+        href="/ECX-4.0-Sponsorship-Packet.pdf"
+        download="ECX 4.0 Sponsorship Packet.pdf"
       >
-        <Page
-          pageNumber={pageNumber}
-          renderAnnotationLayer={false}
-          renderTextLayer={false}
-        />
-      </Document>
+        download
+      </a>
     </div>
   );
 };
